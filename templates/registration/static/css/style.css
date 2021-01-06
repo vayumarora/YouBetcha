@@ -1,0 +1,30 @@
+.clear10{
+    clear: both;
+    height: 10px
+}
+
+.clear20{
+    clear: both;
+    height: 20px
+}
+
+.clear30{
+    clear: both;
+    height: 30px
+}
+
+.clear40{
+    clear: both;
+    height: 40px
+}
+
+.add-friend{
+    border: 0px;
+    padding: 0px 12px;
+    line-height: 1.3;
+}
+
+.bet-btn{
+    border: 0px;
+    padding: 2px 12px;
+}

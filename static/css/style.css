@@ -1,0 +1,51 @@
+@font-face {
+    font-family: 'Impact';
+}
+body{
+    font-family: 'Impact';
+    font-weight:200;
+    min-height: 2000px;
+
+}
+.clear10{
+    clear: both;
+    height: 10px;
+    line-height: 100px;
+}
+
+.clear20{
+    clear: both;
+    height: 20px;
+    line-height: 100px;
+}
+
+.clear30{
+    clear: both;
+    height: 30px;
+    line-height: 100px;
+}
+
+.clear40{
+    clear: both;
+    height: 40px;
+    line-height: 100px;
+
+}
+
+.add-friend{
+    border: 0px;
+    padding: 0px 12px;
+    line-height: 1.3;
+}
+
+.bet-btn{
+    border: 0px;
+    padding: 2px 12px;
+}
+.bgcontain{
+    beight:500px;
+    background-image: url('C:\Users\vayum\PycharmProjects\YouBetchaFinal\templates\realfield.png');
+    background-size: 800px;
+
+
+}

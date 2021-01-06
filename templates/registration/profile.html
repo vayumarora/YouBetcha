@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+
+  <div class="panel-heading"><b>Profile</b></div>
+
+    <div class="clear20"></div>
+
+    <form role="form" action="{% url 'user_profile' %}" class="form-horizontal" method="post">
+
+            {% csrf_token %}
+            {% bootstrap_form_errors form type='non_fields' %}
+            <div class="form-group form-group-sm">
+                <label class="col-md-3 control-label">Email</label>
+                <div class="col-md-6">
+                    {{ request.user.email }}
+                </div>
+            </div>
+            {% bootstrap_field form.name layout='horizontal' size='sm' %}
+            {% bootstrap_field form.gender layout='horizontal' size='sm' %}
+            {% bootstrap_field form.dob layout='horizontal' size='sm' %}
+
+        <div class="clear10"></div>
+
+        {% buttons submit='Update' reset='Reset' layout='horizontal' %}
+        {% endbuttons %}
+
+    </form>
+
+</div>
+
+{% endblock %}

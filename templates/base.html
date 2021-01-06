@@ -1,0 +1,51 @@
+{% extends 'bootstrap3/bootstrap3.html' %}
+{% include 'top_nav.html' %}
+{% load static %}
+
+
+
+{% load static %}
+
+{% block bootstrap3_title %}
+    Sports Betting - {% block title %}{% endblock %}
+    <img src="{% static "background.PNG" %}" alt="YouBetcha!"/>
+{% endblock %}
+
+{% load bootstrap3 %}
+
+
+
+{% block bootstrap3_content %}
+            <div style="background-image:url('https://images7.alphacoders.com/426/426529.jpg');height:1200px;>
+
+
+
+    <link href="{% static 'css/jquery-ui.css' %}" type="text/css" rel="stylesheet"/>
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet"/>
+
+    <div class="container">
+    <div class="clear10"></div>
+
+        {% include 'top_nav.html' %}
+
+
+        <div class="clear10"></div>
+        {% load static %}
+       <h1 align="center"><img src="{% static "reallogo.PNG" %}" alt="YouBetcha!"/></h1>
+
+
+
+
+
+        {% bootstrap_messages %}
+
+        {% block content %}(no content){% endblock %}
+    </div>
+
+{% endblock %}
+
+{% block bootstrap3_extra_script %}
+        <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+        <script src="{% static 'js/ajax.js' %}"></script>
+        <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

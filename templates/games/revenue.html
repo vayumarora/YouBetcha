@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+    Past Bets
+{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+  <div class="panel-heading"><b>Past Bets</b></div>
+
+  {% if bets %}
+            <h4 class="pull-right" >Total Revenue: ${{ total_revenue }}</h4>
+
+
+  <table class="table">
+
+    <thead>
+
+        <th>Game</th>
+        <th>Team</th>
+        <th>Friend </th>
+        <th>Type </th>
+        <th>Amount</th>
+        <th>Winner</th>
+
+
+
+
+
+    </thead>
+
+    {% for bet in bets %}
+      <tr>
+
+          <td>
+                {{ bet.game.Away_team }} @
+                <br/>
+                {{ bet.game.Home_team }}</td>
+           <td>{{ bet.team }}</td>
+
+          <td>{{ bet.friend }}</td>
+
+          <td>{{ bet.type }}</td>
+          <td>{{ bet.amount }}</td>
+        <td>{{ bet.winner }}</td>
+
+
+      </tr>
+
+    {% endfor %}
+  </table>
+
+    {% else %}
+
+    <div class="clear40"><h5>&emsp;&emsp;Oooops... You have no past bets.</h5></div>
+
+
+    {% endif %}
+
+</div>
+
+{% if games.paginator.num_pages > 1 %}{% bootstrap_pagination games size="small" %}{% endif %}
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+{% block title %}
+    Bet On Game
+{% endblock %}
+{% block content %}
+<div class="panel panel-default">
+  <div class="panel-heading"><b>Bet On Game</b></div>
+    <div class="clear10"></div>
+    <div class="center-block col-md-3" style="float: none;">
+      <p><b>{{ game.Away_team }}</b> @ <b>{{ game.Home_team }}</b></p>
+        <p><b>Home Line:</b> {{ game.Home_line }}</p>
+        <p><b>Away Line:</b> {{ game.Away_line }}</p>
+        <p><b>Date: </b> {{ game.date }}  <b>Time: </b> {{ game.time }}</p>
+    </div>
+    <div class="clear10"></div>
+        <form role="form" action="{% url 'bet_on_game' game.id %}" class="form-horizontal" method="post">
+        {% csrf_token %}
+        {% bootstrap_form form layout="horizontal" %}
+        <div class="clear20"></div>
+        {% buttons submit='Submit' reset='Reset' layout='horizontal' %}
+        {% endbuttons %}
+    </form>
+{% endblock %}

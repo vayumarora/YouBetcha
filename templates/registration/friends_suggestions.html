@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% load static %}
+
+{% block title %}
+    Friends Suggestions
+{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+  <div class="panel-heading"><b>Suggested Friends</b></div>
+
+    {% if users %}
+
+  <table class="table">
+
+    <thead>
+        <th>Name</th>
+        <th>Gender</th>
+        <th>Date Of Birth</th>
+        <th width="100" >Action</th>
+    </thead>
+
+    {% for user in users %}
+      <tr>
+
+          <td> {{ user.name|title }}</td>
+          <td>{{ user.gender|title }}</td>
+          <td>{{ user.dob }}</td>
+
+          <td>
+                  {% if user.id in request.user.friends_list_ids %}
+                        {% bootstrap_icon "ok" %}
+                        <a href="javascript:void(0)" data="{% url 'remove_friend' user.id %}" class="remove-friend" >{% bootstrap_icon "trash" %}</a>
+                  {% else %}
+                        <a href="javascript:void(0)" data="{% url 'add_friend' user.id %}" class="btn btn-primary add-friend">Add</a>
+                  {% endif %}
+          </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+    {% else %}
+
+        <div class="clear40"><h5>&emsp;&emsp;Oooops... There is no one you can add to friends list. Try later</h5></div>
+
+    {% endif %}
+
+
+</div>
+
+       {% if users.paginator.num_pages > 1  %} {% bootstrap_pagination users size="small" %}{% endif %}
+
+        <div class="alert alert-success friend-alert" style="display: none;"></div>
+
+{% endblock %}

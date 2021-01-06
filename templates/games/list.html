@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% load bootstrap3 %}
+
+{% block title %}
+    Games
+{% endblock %}
+
+{% block content %}
+
+<div class="panel panel-default">
+  <div class="panel-heading"><b>Today's Games</b></div>
+
+  {% if games %}
+
+  <table class="table">
+
+    <thead>
+        <th>Teams</th>
+        <th>Home Line</th>
+        <th>Away Line</th>
+        <th>Time/TV</th>
+        <th>Date</th>
+        <th>Action</th>
+    </thead>
+
+    {% for game in games %}
+      <tr>
+
+          <td>
+                {{ game.Away_team }} @
+                <br/>
+                {{ game.Home_team }}
+          </td>
+
+          <td>
+              {% if game.Home_line %}
+                {{ game.Home_line }}
+              {% else %}
+                N/A
+              {% endif %}
+          </td>
+
+          <td>
+              {% if game.Away_line %}
+                {{ game.Away_line }}
+              {% else %}
+                N/A
+              {% endif %}
+          </td>
+
+          <td>{{ game.time }}</td>
+
+          <td>{{ game.date }}</td>
+
+      <td><a href = "{% url 'bet_on_game' game.id%}" class= "btn btn-primary bet-btn">Bet!</a></td>
+      </tr>
+    {% endfor %}
+  </table>
+
+    {% else %}
+
+    <div class="clear40"><h5>&emsp;&emsp;Oooops... No games are playing today.</h5></div>
+
+
+    {% endif %}
+
+</div>
+
+{% if games.paginator.num_pages > 1 %}{% bootstrap_pagination games size="small" %}{% endif %}
+
+{% endblock %}

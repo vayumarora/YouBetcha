@@ -1,0 +1,42 @@
+Columns: 
+User_id  
+game_id 
+friend_id 
+amount
+type
+team
+home_points
+away_points
+winner
+
+Figure out who winner/loser is
+Figure out how to add/subtract money to total balance for winner/loser
+add a starting balance of 500 dollars
+what happens when you run out of money? (option to buy more)
+figure out problem of betting more than you have
+
+Figure out who winner/loser is:
+1.every day, run the games program in the morning at 1 am once
+2.run the gameresults program at 1 am once, for the games of the previous day
+3. run the betresults program right after the results program (1:30) am everyday
+4. Add a winner column in user_bets table
+5. Fetch the rows from the user_bets table where the winner column is null
+6. Fetch the home_points and away_points from the results table using the game_id in the user_bets table
+7. Fetch the home_line,home team,away line, away team from the game table using the game_id in the user bets table
+8. Match the team in the user_bets column to the home team. If there is a match, team is home_team. If no match, team is away_team
+9.Find the value of (home_points - away_points). Call this difference. 
+For straight up:
+1. If the difference is greater than 0, set home_team_victorious to True. If this value is true,
+if team in the user_bet table = home_team, winner=user_id. If home_team_victorius = False, if team in the user_bet table is not home_team, winner=user_id
+Else, winner=friend_id
+For point spread:
+1. If the difference is greater than the away_line, set home_team_victorious to True. If this value is true,
+if team in the user_bet table = home_team, winner=user_id. If home_team_victorius = False, if team in the user_bet table is not home_team, winner=user_id
+Else, winner=friend_id
+	
+
+
+SELECT user_bets.id,user_bets.type,user_bets.team,user_bets.friend_id,user_bets.user_id,user_bets.game_id,
+game.Home_line,game.Away_line,results.Home_points,results.Away_points
+FROM finalyoubetchadb.game, finalyoubetchadb.user_bets, finalyoubetchadb.results 
+where game.id=user_bets.game_id and results.game_id=user_bets.game_id and user_bets.winner_id = 0; 

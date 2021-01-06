@@ -1,0 +1,30 @@
+<ul class="nav nav-pills">
+
+
+    {% if not user.is_authenticated %}
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'games' %}">
+            <p style="font-family:Verdana; font-size:20px; color:gainsboro;">Games</p>
+        </a></li>
+        <li><a href="{% url 'bets_list' %}">
+            <p style="font-family:Verdana; font-size:20px; color:gainsboro;">Bets</p>
+        </a></li>
+        <li><a href="{% url 'revenue' %}">
+            <p style="font-family:Verdana; font-size:20px; color:gainsboro;">Revenue</p>
+        </a></li>
+       <li><a href="{% url 'friends_suggestions' %}">
+            <p style="font-family:Verdana; font-size:20px; color:gainsboro;">Friends</p>
+        </a></li>
+        <li><a href="{% url 'user_profile' %}">
+            <p style="font-family:Verdana; font-size:20px; color:gainsboro;">Profile</p>
+        </a> </li>
+        <li><a href="{% url 'logout' %}">
+            <p style="font-family:Verdana; font-size:20px; color:gainsboro;">Logout</p>
+        </a></li>
+    {% endif %}
+ </ul>
